@@ -1,5 +1,5 @@
 package testing;
-/*
+
 import java.util.ArrayList;
 
 import org.apache.hadoop.io.DoubleWritable;
@@ -39,7 +39,7 @@ public class Question5Test {
 	@Test
 	public void testMapper() {
 		String s = "\"United States\",\"USA\",\"Unemployment with advanced education, female (% of female labor force with advanced education)\","
-				+ "\"SL.UEM.ADVN.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
+				+ "\"SE.SCH.LIFE.FE\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"35\",\"\",\"\",\"\"," // 2001
@@ -49,10 +49,10 @@ public class Question5Test {
 		
 		mapDriver.withInput(new LongWritable(40000), new Text(s));
 		
-		mapDriver.withOutput(new Text("Global2001"), new DoubleWritable(35)); 
-		mapDriver.withOutput(new Text("Global2016"), new DoubleWritable(45)); 
-		mapDriver.withOutput(new Text("USA2001"), new DoubleWritable(35)); 
-		mapDriver.withOutput(new Text("USA2016"), new DoubleWritable(45)); 
+		mapDriver.withOutput(new Text("Global2001_E"), new DoubleWritable(35)); 
+		mapDriver.withOutput(new Text("Global2016_E"), new DoubleWritable(45)); 
+		mapDriver.withOutput(new Text("USA2001_E"), new DoubleWritable(35)); 
+		mapDriver.withOutput(new Text("USA2016_E"), new DoubleWritable(45)); 
 
 
 
@@ -118,4 +118,3 @@ public class Question5Test {
 		mapReduceDriver.runTest();
 	}
 }
-*/
