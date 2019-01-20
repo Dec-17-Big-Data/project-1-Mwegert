@@ -5,7 +5,11 @@ import java.io.IOException;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
+/**
+ * 
+ * @author mason
+ * <p>This reducer formats the output.</p>
+ */
 public class Q4Reducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 
 	// runs once for each country

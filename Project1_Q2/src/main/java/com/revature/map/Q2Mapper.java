@@ -7,12 +7,24 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-/*List the average increase in female education in the U.S. from the year 2000.
- * COL B: USA
+/**
+ * 
+ * @author mason
+ * 
+ * <p>COL D: Fields related to female education start with SE and end with FE.
+ * It is assumed that this pattern is consistent throughout.
+ * COL B: USA (country code)
+ * 
+ * Example fields are shown below.
  * School enrollment, tertiary, female (% gross) (SE.TER.ENRR.FE)
- * School enrollment, secondary, female (% gross) (SE.SEC.ENRR.FE)
- * start with SE end with FE
- *
+ * School enrollment, secondary, female (% gross) (SE.SEC.ENRR.FE)</p>
+ * 
+ * <p>The average RELATIVE annual increase is found by iterating through the data, and
+ * multiplying an overall factor (int totalIncrease) by the relative change from the
+ * previous value after each iteration. This makes the code robust and enables it work
+ * even it's later decided that the initial value can vary.
+ * 
+ * This number is calculated for each qualifying row and is then written to the reducer.</p>
  */
 
 public class Q2Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {

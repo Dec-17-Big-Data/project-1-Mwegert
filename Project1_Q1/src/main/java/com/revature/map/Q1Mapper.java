@@ -9,9 +9,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * @author mason
- * <p>This mapper skips the first 29,000 rows, as they contain data for regions rather than 
- * individual countries, which are the focus of this question. Fields are delimited by ' "," '
- * (three characters), as commas can be included in some fields. For a given row, this map method
+ * <p>Fields in the input file are delimited by [","]. For a given row, this map method
  * iterates backwards through each field (columns 60 - 4 are years 2016 - 1960), and parses the 
  * graduation rate for the most recent available year. 
  * The key: (country name (rowArr[0]) and year) and value: (graduation percentage) are sent to the reducer.</p>

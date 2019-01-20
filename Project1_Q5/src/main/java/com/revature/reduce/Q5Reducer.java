@@ -6,6 +6,12 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
+/**
+ * 
+ * @author mason
+ * <p>This reducer finds the average rate of unemployment with advanced education
+ * across the world, as well as for the US and writes these to the output for each year.</p>
+ */
 public class Q5Reducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 
 	// ~32 keys, one for each year 2000-2016 in Global and USA

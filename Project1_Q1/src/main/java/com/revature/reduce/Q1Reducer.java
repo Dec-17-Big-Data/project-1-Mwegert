@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Reducer;
  * @author mason
  * <p> The reduce method runs once per country. 
  * It simply writes the key/value from the map to its output.
- * This class could be used to easily change formatting if needed.
+ * It's kept in the program because the MRUnit tests were having issues without a reducer.
  */
 public class Q1Reducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 

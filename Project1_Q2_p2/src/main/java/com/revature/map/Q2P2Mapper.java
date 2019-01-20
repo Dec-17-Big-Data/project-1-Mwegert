@@ -7,10 +7,11 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-/*List the average increase in female education in the U.S. from the year 2000.
- * COL B: USA
- * School enrollment, tertiary, female (% gross) (SE.TER.ENRR.FE)
- *
+/**
+ * 
+ * @author mason
+ * <p>This mapper simply reads a single row from the table: gross tertiary enrollment for the USA.
+ * A row is printed displaying the enrollment percentage for each year from 2000 to 2016.</p>
  */
 
 public class Q2P2Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {

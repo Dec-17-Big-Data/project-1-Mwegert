@@ -7,10 +7,19 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-/*Unemployment with advanced education, 
- * female (% of female labor force with advanced education) (SL.UEM.ADVN.FE.ZS)
- */
 
+/**
+ * 
+ * @author mason
+ * 
+ * <p>The relevant fields for this query are SL.UEM.ADVN.FE.ZS and SL.UEM.ADVN.MA.ZS.
+ * For a given year, this mapper lumps both fields into the same key. Country is 
+ * irrelevant for the global statistic, so each country will also output to the same
+ * key so that an aggregate can be formed. In other words, each country writes two values.
+ * 
+ * For the USA, there are 16 keys (one for each year), each with 2 values (for the 2 fields).
+ * These two are simply averaged for the final output.</p>
+ */
 public class Q5Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 
 	@Override

@@ -7,8 +7,14 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-/*List the % of change in male employment from the year 2000. 
-Employment to population ratio, 15+, male (%) (national estimate) (SL.EMP.TOTL.SP.MA.NE.ZS)*/
+/**
+ * 
+ * @author mason
+ * <p>The desired indicator code for this question is 'SL.EMP.TOTL.SP.MA.NE.ZS'.
+ * The mapper only writes a value if data for the year 2000 AND data for some year
+ * after that is available. It then finds the relative annual change in employment
+ * between 2000 and the most recent year with data and writes this information to the output.</p>
+ */
 
 public class Q3Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 

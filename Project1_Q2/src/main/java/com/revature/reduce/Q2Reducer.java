@@ -6,6 +6,11 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
+/**
+ * 
+ * @author mason
+ * This reducer simply formats the final output.
+ */
 public class Q2Reducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 
 	// runs once for each field

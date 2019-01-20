@@ -11,10 +11,10 @@ import com.revature.map.Q1Mapper;
 
 /**
  * @author mason
- * <h5> Identify the countries where % of female graduates is less than 30%. </h5>
+ * <h5>Identify the countries where % of female graduates is less than 30%. </h5>
  * <p>The field used for this question is 'Gross graduation ratio, tertiary, female (%)'.
  * The general approach used was to read the graduation rate for the most recent available
- * year for each country, and to include this year in the output.</p>
+ * year for each country, and to write this information to the output file.</p>
  */
 public class QuestionOne {
 

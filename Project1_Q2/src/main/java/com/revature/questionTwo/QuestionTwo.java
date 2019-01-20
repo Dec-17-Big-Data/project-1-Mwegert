@@ -9,7 +9,14 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.revature.map.Q2Mapper;
 import com.revature.reduce.Q2Reducer;
-
+/**
+ * 
+ * @author mason
+ * 
+ * <h5>List the average increase in female education in the U.S. from the year 2000.</h5>
+ * <p>The goal of this solution is to provide the average annual increase for any relevant
+ * field that has information for the year 2000 as well as for some year after that.</p>
+ */
 public class QuestionTwo {
 
 	public static void main(String[] args) throws Exception {
