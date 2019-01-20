@@ -16,32 +16,31 @@ public class Q5Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 	@Override
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
-		if (Integer.valueOf(key.toString()) >= 28890){ // start at individual countries
 
-			String line = value.toString();
+		String line = value.toString().trim();
 
-			String[] rowArr = line.split("\",\""); // split by '  ","  '
-			if (rowArr[3].equals("SL.UEM.ADVN.FE.ZS") || rowArr[3].equals("SL.UEM.ADVN.MA.ZS")){
-				int year = 0;
+		String[] rowArr = line.split("\",\""); // split by '  ","  '
+		if (rowArr[3].equals("SL.UEM.ADVN.FE.ZS") || rowArr[3].equals("SL.UEM.ADVN.MA.ZS")){
+			int year = 0;
 
+			for (int i = 44; i < rowArr.length; i++){ // 2000 to 2016
+				rowArr[i] = rowArr[i].replaceAll(" ","").replaceAll("\"", "").replaceAll(",", ""); 
+				if (rowArr[i].equals("")) continue;
+				year = i + 2000 - 44;
+				context.write(new Text("Global" + year), new DoubleWritable(Double.valueOf(rowArr[i])));
+				// writes: Global2016
+			}
+			if (rowArr[1].equals("USA")){
 				for (int i = 44; i < rowArr.length; i++){ // 2000 to 2016
 					rowArr[i] = rowArr[i].replaceAll(" ","").replaceAll("\"", "").replaceAll(",", ""); 
 					if (rowArr[i].equals("")) continue;
 					year = i + 2000 - 44;
-					context.write(new Text("Global" + year), new DoubleWritable(Double.valueOf(rowArr[i])));
-					// writes: Global2016
+					context.write(new Text("USA" + year), new DoubleWritable(Double.valueOf(rowArr[i])));
+					// writes: USA2016
 				}
-				if (rowArr[1].equals("USA")){
-					for (int i = 44; i < rowArr.length; i++){ // 2000 to 2016
-						rowArr[i] = rowArr[i].replaceAll(" ","").replaceAll("\"", "").replaceAll(",", ""); 
-						if (rowArr[i].equals("")) continue;
-						year = i + 2000 - 44;
-						context.write(new Text("USA" + year), new DoubleWritable(Double.valueOf(rowArr[i])));
-						// writes: USA2016
-					}
-				}
-
 			}
+
 		}
+
 	}
 }

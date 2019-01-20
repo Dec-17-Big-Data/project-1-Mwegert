@@ -1,7 +1,5 @@
 package testing;
 
-import java.util.ArrayList;
-
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -38,12 +36,12 @@ public class Question1Test {
 
 	@Test
 	public void testMapper() {
-		String s = "\"United States\",\"USA\",\"Gross graduation ratio, tertiary, female (%)\","
+		String s = "  \"United States\",\"USA\",\"Gross graduation ratio, tertiary, female (%)\","
 				+ "\"SE.TER.CMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\""
 				+ "\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\""
 				+ ",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"1\",\"2\",\""
 				+ "4\",\"5\",\"6\",\"7\",\"3\",\"9\",\"10\",\""
-				+ "11\",\"12\",\"\",\"14\",\"15\",\"\",\"\",\"\",\"\",";
+				+ "11\",\"12\",\"\",\"14\",\"15\",\"\",\"\",\"\",\"\",\t ";
 		
 		
 		mapDriver.withInput(new LongWritable(30000), new Text(s));
@@ -53,19 +51,6 @@ public class Question1Test {
 		mapDriver.runTest();
 	}
 
-	@Test
-	public void testReducer() {
-		ArrayList<DoubleWritable> exampleInputs = new ArrayList<>();
-
-		exampleInputs.add(new DoubleWritable(10));
-
-		reduceDriver.withInput(new Text("some stat: "), exampleInputs);
-
-		reduceDriver.withOutput(new Text("some stat: "), new DoubleWritable(10));
-		// gives an error if 0, 30, or 50 are included
-
-		reduceDriver.runTest();
-	}
 
 	@Test
 	public void testMapReduce() {

@@ -8,7 +8,6 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.revature.map.Q1Mapper;
-import com.revature.reduce.Q1Reducer;
 
 /**
  * @author mason
@@ -31,7 +30,7 @@ public class QuestionOne {
 
 
 		job.setJarByClass(QuestionOne.class);
-
+		
 		job.setJobName("Question One");
 
 
@@ -40,7 +39,7 @@ public class QuestionOne {
 
 		
 		job.setMapperClass(Q1Mapper.class);
-		job.setReducerClass(Q1Reducer.class);
+		job.setNumReduceTasks(0);
 		
 
 		job.setOutputKeyClass(Text.class);

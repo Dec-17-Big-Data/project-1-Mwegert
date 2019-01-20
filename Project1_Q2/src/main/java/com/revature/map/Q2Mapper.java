@@ -21,18 +21,18 @@ public class Q2Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
 
-		String line = value.toString();
+		String line = value.toString().trim();
 
 		String[] rowArr = line.split("\",\""); // split by '  ","  '
 
 		if ( rowArr[1].equals("USA") && check(rowArr[3]) ){
-			
+
 			double enrollmentPercent = 0;
 			double lastValue = 0;
 			double totalIncrease = 1;
 			int delta = 0;
 			int year = 0;
-	
+
 			if (!rowArr[44].replaceAll(" ","").replaceAll("\"", "").replaceAll(",", "").equals("")){ // if year 2000 exists
 				for (int i = 44; i < rowArr.length; i++){ // 2000 to 2016
 					rowArr[i] = rowArr[i].replaceAll(" ","").replaceAll("\"", "").replaceAll(",", ""); 
@@ -51,7 +51,7 @@ public class Q2Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 			}
 		}
 	}
-	
+
 	private boolean check(String code){
 		String[] fields = code.split("[.]");
 		if (fields[0].equals("SE") && (fields[fields.length - 1].equals("FE") || fields[fields.length - 2].equals("FE"))){
