@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="testing.Question1Test" time="2.621" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="testing.Question1Test" time="1.959" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/java/jdk1.8.0_191/jre/lib/amd64"/>
@@ -59,7 +59,6 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="testing.Question1Test" name="testReducer" time="1.818"/>
-  <testcase classname="testing.Question1Test" name="testMapper" time="0.152"/>
-  <testcase classname="testing.Question1Test" name="testMapReduce" time="0.222"/>
+  <testcase classname="testing.Question1Test" name="testMapper" time="1.358"/>
+  <testcase classname="testing.Question1Test" name="testMapReduce" time="0.289"/>
 </testsuite>

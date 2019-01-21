@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: testing.Question5P2Test
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.049 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.142 sec
