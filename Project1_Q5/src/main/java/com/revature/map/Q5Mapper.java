@@ -48,8 +48,6 @@ public class Q5Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 					// writes: USA2016
 				}
 			}
-
 		}
-
 	}
 }

@@ -73,7 +73,7 @@ plt.title('Unemployment rates over time. Global vs US.')
 xvalues = [x[0] for x in usaUnemp]
 yvalues = [x[1] for x in usaUnemp]
 plt.scatter(xvalues, yvalues, marker = '*', c = 'red')
-plt.legend(['Global','USA'])
+plt.legend(['Global avg by country','USA'])
 
 plt.savefig(unempFileName)
 # total unemp file saved
@@ -95,6 +95,6 @@ plt.title('Unemployment rates for people with advanced education. Global vs US.'
 xvalues = [x[0] for x in usaAdvUnemp]
 yvalues = [x[1] for x in usaAdvUnemp]
 plt.scatter(xvalues, yvalues, marker = '*', c = 'red')
-plt.legend(['Global','USA'])
+plt.legend(['Global avg by country','USA'])
 
 plt.savefig(advUnempFileName)
