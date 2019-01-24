@@ -11,7 +11,15 @@ import org.apache.hadoop.mapreduce.Reducer;
 /**
  * 
  * @author mason
- * // input is like : '[countryCode][year]'
+ * 
+ * <p>This reducer receives a [countrycode][year] for each country & year.
+ * The primary function of this is to solve for total number of unemployed
+ * people for each country + the total population of each country</p>
+ * 
+ * <p>Outputs are in the form '[year]unemp' and '[year]total'. Note that they
+ * are no longer distinguished by country, as the necessary values have been resolved.</p>
+ * 
+ * 
  */
 public class Q5P2PopReducer1 extends Reducer<Text, DoubleWritable, Text, LongWritable> {
 

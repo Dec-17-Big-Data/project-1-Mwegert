@@ -10,6 +10,8 @@ import org.apache.hadoop.mapreduce.Mapper;
  * 
  * @author mason
  * 
+ * <p>This very simple mapper simply converts the TextInputFormat input 
+ * into a key/value pair for the reducer.</p>
  */
 public class Q5PopMapper2 extends Mapper<LongWritable, Text, Text, LongWritable> {
 

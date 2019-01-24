@@ -10,7 +10,10 @@ import org.apache.hadoop.mapreduce.Reducer;
  * 
  * @author mason
  * 
- * inputs: [year] + "unemp" and [year] + "total" \t values
+ * <p>This Reducer simply sums up the total population, and total
+ * unemployed population for each year.
+ * input keys are in the form: [year] + "unemp" and [year] + "total"
+ * Outputs are in the same form.</p>
  */
 public class Q5PopReducer2 extends Reducer<Text, LongWritable, Text, LongWritable> {
 

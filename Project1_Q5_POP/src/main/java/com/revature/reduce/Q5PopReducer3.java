@@ -12,6 +12,10 @@ import org.apache.hadoop.mapreduce.Reducer;
  * 
  * @author mason
  * 
+ * <p>This reducer receives two values for each year. The larger value 
+ * will always be the total population, while the smaller value 
+ * is the unemployed population. With this it solves for unemployment
+ * rate for each year.</p>
  */
 public class Q5PopReducer3 extends Reducer<Text, LongWritable, Text, DoubleWritable> {
 

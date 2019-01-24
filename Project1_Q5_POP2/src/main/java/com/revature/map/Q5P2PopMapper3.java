@@ -10,6 +10,8 @@ import org.apache.hadoop.mapreduce.Mapper;
  * 
  * @author mason
  * 
+ * <p>This mapper performs a reduce side join of total unemployed
+ * and total population for each year, so they can be combined into a %.</p>
  */
 public class Q5P2PopMapper3 extends Mapper<LongWritable, Text, Text, LongWritable> {
 

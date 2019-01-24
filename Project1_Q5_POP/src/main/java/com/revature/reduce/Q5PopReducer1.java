@@ -11,8 +11,16 @@ import org.apache.hadoop.mapreduce.Reducer;
 /**
  * 
  * @author mason
- * <p>This reducer finds the average rate of unemployment with advanced education
- * across the world, as well as for the US and writes these to the output for each year.</p>
+ * 
+ * <p>This reducer receives a [countrycode][year][FE] or [MA] for each country & year.
+ * The primary functions of this are to 1) solve for total number of unemployed
+ * people for each country + the total population of each country and 
+ * 2) join males and females on a single key.</p>
+ * 
+ * <p>Outputs are in the form '[year]unemp' and '[year]total'. Note that they
+ * are no longer distinguished by country, as the necessary values have been resolved.</p>
+ * 
+ * 
  */
 public class Q5PopReducer1 extends Reducer<Text, DoubleWritable, Text, LongWritable> {
 

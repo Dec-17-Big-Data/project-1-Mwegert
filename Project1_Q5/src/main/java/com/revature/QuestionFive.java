@@ -13,7 +13,8 @@ import com.revature.reduce.Q5Reducer;
 /**
  * 
  * @author mason
- * <h4>This map/reduce finds the average percentage of the population
+ * 
+ * <h4>This MapReduce finds the average percentage of the population
  * with higher education that is unemployed. 
  * (Unemployment with advanced education, female/male (% of female labor force with advanced education))</h4>
  * 

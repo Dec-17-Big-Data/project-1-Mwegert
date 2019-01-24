@@ -6,7 +6,7 @@ import random
 import re
 
 unempFileName = 'Question5_POP_total_unemp_plot' # for plot
-advUnempFileName = 'Question5_POP_adv_unemp_POP_plot'
+advUnempFileName = 'Question5_POP_adv_unemp_plot'
 
 
 # unemp with advanced ed file (for US)

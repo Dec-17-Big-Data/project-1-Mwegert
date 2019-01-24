@@ -91,7 +91,6 @@ plt.xlabel('Year')
 plt.ylabel('Unemployment rates (%)')
 plt.title('Unemployment rates for people with advanced education. Global vs US.')
 
-
 xvalues = [x[0] for x in usaAdvUnemp]
 yvalues = [x[1] for x in usaAdvUnemp]
 plt.scatter(xvalues, yvalues, marker = '*', c = 'red')

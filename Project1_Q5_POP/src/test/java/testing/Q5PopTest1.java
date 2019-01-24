@@ -44,13 +44,15 @@ public class Q5PopTest1 {
 				+ "\"SL.UEM.ADVN.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"35\",\"\",\"\",\"\"," // 2001
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"\",\"45.5\","; // 2016
+				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
+				+ "\"\",\"35\",\"\",\"\",\"50\","; // 2013 and 2016. 2014, 2015 should be interpolated to 40, 45
 		mapDriver.withInput(new LongWritable(1), new Text(s));
 		
-		mapDriver.withOutput(new Text("USA2001FE"), new DoubleWritable(35));
-		mapDriver.withOutput(new Text("USA2016FE"), new DoubleWritable(45.5));
+		mapDriver.withOutput(new Text("USA2013FE"), new DoubleWritable(35));
+		mapDriver.withOutput(new Text("USA2015FE"), new DoubleWritable(45));
+		mapDriver.withOutput(new Text("USA2014FE"), new DoubleWritable(40));
+		mapDriver.withOutput(new Text("USA2016FE"), new DoubleWritable(50));
 
 		mapDriver.runTest();
 	}
@@ -77,30 +79,30 @@ public class Q5PopTest1 {
 				+ "\"SL.UEM.ADVN.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"10\",\"\",\"\",\"\"," // 2001
+				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\"," // 2001
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"\",\"20\","; // 2016
+				+ "\"\",\"\",\"6\",\"\",\"18\","; // 2016
 		String s2 = "\"United States\",\"USA\",\"Unemployment with advanced education, male (% of male labor force with advanced education)\","
 				+ "\"SL.UEM.ADVN.MA.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"5\",\"\",\"\",\"\"," // 2001
+				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\"," // 2001
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"\",\"10\","; // 2016
+				+ "\"\",\"\",\"3\",\"\",\"9\","; // 2016
 		String s3 = "\"United States\",\"USA\",\"total pop\","
 				+ "\"SP.POP.TOTL\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"110000\",\"\",\"\",\"\"," // 2001
+				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\"," // 2001
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"\",\"210000\","; // 2016
+				+ "\"\",\"\",\"100000\",\"\",\"300000\","; // 2016
 		String s4 = "\"United States\",\"USA\",\"population, female\","
 				+ "\"SP.POP.TOTL.FE.IN\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"50000\",\"\",\"\",\"\"," // 2001
+				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\"," 
 				+ "\"\",\"\",\"\",\"\",\"\",\"\",\"\","
-				+ "\"\",\"\",\"\",\"\",\"100000\","; // 2016
+				+ "\"\",\"\",\"50000\",\"\",\"150000\","; // 2014, 2016
 
 		
 		mapReduceDriver.withInput(new LongWritable(1), new Text(s1));
@@ -109,15 +111,20 @@ public class Q5PopTest1 {
 		mapReduceDriver.withInput(new LongWritable(4), new Text(s4));
 
 		
-		mapReduceDriver.withOutput(new Text("2001unemp"), new LongWritable((long) (50000 * 0.1))); // 0
-		mapReduceDriver.withOutput(new Text("2001total"), new LongWritable(50000)); // 1
-		mapReduceDriver.withOutput(new Text("2001unemp"), new LongWritable((long) (60000 * 0.05))); // 2
-		mapReduceDriver.withOutput(new Text("2001total"), new LongWritable(60000)); // 3
+		mapReduceDriver.withOutput(new Text("2014unemp"), new LongWritable((long) (50000 * 0.06))); // 0
+		mapReduceDriver.withOutput(new Text("2014total"), new LongWritable(50000)); // 1
+		mapReduceDriver.withOutput(new Text("2014unemp"), new LongWritable((long) (50000 * 0.03))); // 2
+		mapReduceDriver.withOutput(new Text("2014total"), new LongWritable(50000)); // 3
 		
-		mapReduceDriver.withOutput(new Text("2016unemp"), new LongWritable((long)(100000 * 0.2))); // 4
-		mapReduceDriver.withOutput(new Text("2016total"), new LongWritable(100000)); // 5
-		mapReduceDriver.withOutput(new Text("2016unemp"), new LongWritable((long) (110000 * 0.1))); // 6
-		mapReduceDriver.withOutput(new Text("2016total"), new LongWritable(110000)); // 7
+		mapReduceDriver.withOutput(new Text("2015unemp"), new LongWritable((long) (100000 * 0.12))); // 0
+		mapReduceDriver.withOutput(new Text("2015total"), new LongWritable(100000)); // 1
+		mapReduceDriver.withOutput(new Text("2015unemp"), new LongWritable((long) (100000 * 0.06))); // 2
+		mapReduceDriver.withOutput(new Text("2015total"), new LongWritable(100000)); // 3
+		
+		mapReduceDriver.withOutput(new Text("2016unemp"), new LongWritable((long)(150000 * 0.18))); // 4
+		mapReduceDriver.withOutput(new Text("2016total"), new LongWritable(150000)); // 5
+		mapReduceDriver.withOutput(new Text("2016unemp"), new LongWritable((long) (150000 * 0.09))); // 6
+		mapReduceDriver.withOutput(new Text("2016total"), new LongWritable(150000)); // 7
 
 
 		mapReduceDriver.runTest();
