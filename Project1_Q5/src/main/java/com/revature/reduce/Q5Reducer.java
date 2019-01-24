@@ -1,0 +1,44 @@
+package com.revature.reduce;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+/**
+ * 
+ * @author mason
+ * <p>This reducer finds the average rate of unemployment with advanced education
+ * across the world, as well as for the US and writes these to the output for each year.</p>
+ */
+public class Q5Reducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
+
+	// ~32 keys, one for each year 2000-2016 in Global and USA
+	@Override
+	public void reduce(Text key, Iterable<DoubleWritable> values, Context context)
+			throws IOException, InterruptedException {
+
+		int counter = 0;
+		double average = 0;
+		String inputKey = key.toString();
+		String year = inputKey.substring(inputKey.length() - 4);
+		String label = inputKey.substring(0, inputKey.length() - 4);
+		
+		for (DoubleWritable percentage:values){
+			if (average == 0){
+				average = percentage.get();
+			} else{
+				average += percentage.get();
+			}
+			counter++;
+		}
+		average /= counter;
+		
+		if (label.equals("USA")){
+			context.write(new Text(label + " unemployment rate with advanced education in " + year + ": "), new DoubleWritable(average));
+		} else{
+			context.write(new Text(label + " average unemployment rate with advanced education in " + year + " over " + counter/2 + " countries: "), new DoubleWritable(average));
+		}
+	}
+}
